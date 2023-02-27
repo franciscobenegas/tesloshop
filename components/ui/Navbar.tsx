@@ -40,7 +40,7 @@ export const Navbar = () => {
       <Toolbar>
         <NextLink href="/" passHref>
           <Link display="flex" alignItems="center">
-            <Typography variant="h6">PuraRaza2 |</Typography>
+            <Typography variant="h6">PuraRaza |</Typography>
             <Typography sx={{ ml: 0.5 }}>App</Typography>
           </Link>
         </NextLink>
