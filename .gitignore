@@ -3,7 +3,7 @@ mongo/
 
 .env
 .env.development
-..env.production
+.env.production
 
 # dependencies
 /node_modules
