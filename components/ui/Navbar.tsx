@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, useState } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
@@ -13,6 +14,7 @@ import {
   Link,
   Toolbar,
   Typography,
+  useTheme,
 } from "@mui/material";
 import {
   ClearOutlined,
@@ -21,6 +23,38 @@ import {
 } from "@mui/icons-material";
 
 import { CartContext, UiContext } from "../../context";
+import { darkTheme } from "../../themes/dark-theme";
+
+import Brightness5OutlinedIcon from "@mui/icons-material/Brightness5Outlined";
+import Brightness2OutlinedIcon from "@mui/icons-material/Brightness2Outlined";
+
+const ColorModeContext = React.createContext({ MyApp: () => {} });
+
+function CombioTema() {
+  const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
+
+  console.log(colorMode);
+
+  return (
+    <Box
+      sx={{
+        bgcolor: "background.default",
+        color: "text.primary",
+        borderRadius: 1,
+        marginRight: "15px",
+      }}
+    >
+      <IconButton sx={{ ml: 1 }} onClick={colorMode.MyApp} color="inherit">
+        {theme.palette.mode === "dark" ? (
+          <Brightness5OutlinedIcon />
+        ) : (
+          <Brightness2OutlinedIcon />
+        )}
+      </IconButton>
+    </Box>
+  );
+}
 
 export const Navbar = () => {
   const { asPath, push } = useRouter();
@@ -36,7 +70,12 @@ export const Navbar = () => {
   };
 
   return (
-    <AppBar>
+    <AppBar
+      sx={{
+        bgcolor: "background.default",
+        color: "text.primary",
+      }}
+    >
       <Toolbar>
         <NextLink href="/" passHref>
           <Link display="flex" alignItems="center">
@@ -127,7 +166,7 @@ export const Navbar = () => {
             </IconButton>
           </Link>
         </NextLink>
-
+        <CombioTema />
         <Button onClick={toggleSideMenu}>Menú</Button>
       </Toolbar>
     </AppBar>
